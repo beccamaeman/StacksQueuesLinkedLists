@@ -2,11 +2,11 @@
  * Programmer:	Becca Man
  * Class:	CS40S
  * 
- * Assignment:	stack data structure
+ * Assignment:	queue data structure
  *
- * Description:	This class is my implementation of a stack 
+ * Description:	This class is my implementation of a queue 
  *              data structure. I used an arraylist to constsruct
- *              my stack. It has the methods peek, pop, push and isemtpy.
+ *              my queue. It has the methods peek, pop, push and isemtpy.
  *
  *************************************************************/
  
@@ -33,12 +33,12 @@ public class Queue{//begin class
     //**********observers**********
         
         /****************************************
-        * retrieve top value of queue
+        * retrieve head value of queue
         * IN: none
-        * OUT: top value of queue
+        * OUT: head value of queue
         ****************************************/
         public int check(){
-            return (int) queue.get(indexS);
+            return (int) queue.get(index);
         }//end get top value
         
         /****************************************
@@ -67,7 +67,7 @@ public class Queue{//begin class
         }//end remove top value
         
         /****************************************
-        * push new value onto top of queue
+        * push new value onto back of queue
         * IN: none
         * OUT: none
         ****************************************/
