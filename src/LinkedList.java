@@ -18,6 +18,8 @@ public class LinkedList{//begin class
  	
     //**********instance variable**********
     
+        //next class make an array list of nodes.
+    
         private Node head;
         private Node tail;
         private int index;
@@ -47,10 +49,17 @@ public class LinkedList{//begin class
             Node pointer = new Node(addMe, null);
             index++;
             
+            tail = head;            //set tail to head    
             head = pointer;         //set head to new value pointer at beginning
-            tail = head;            //set tail to head
-            
+                
         }//end insert first
+        
+        public void insertLast(Object addMe){
+            
+            Node pointer = new Node(addMe, null);
+            index++;
+            
+        }
         
         public Object printFirst(){
             return head.getData();
