@@ -28,6 +28,7 @@ public class Stack{//begin class
         public Stack(){
             System.out.println("New stack being created");
             stack = new ArrayList();
+            System.out.println(stack.getClass());
         }//end constructor
  	
     //**********observers**********
@@ -37,8 +38,8 @@ public class Stack{//begin class
         * IN: none
         * OUT: top value of stack
         ****************************************/
-        public int peek(){
-            return (int) stack.get(0);
+        public Object peek(){
+            return stack.get(0);
         }//end get top value
         
         /****************************************
@@ -60,8 +61,8 @@ public class Stack{//begin class
         * IN: none
         * OUT: top value of stack
         ****************************************/
-        public int pop(){
-            int temp = (int) stack.get(0);
+        public Object pop(){
+            Object temp = stack.get(0);
             stack.remove(0);
             return temp;
         }//end remove top value
@@ -71,7 +72,7 @@ public class Stack{//begin class
         * IN: none
         * OUT: none
         ****************************************/
-        public void push(int n){
+        public void push(Object n){
             stack.add(0, n);
             index++;
         }//end push value on top of stack
