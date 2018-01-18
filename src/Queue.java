@@ -6,7 +6,7 @@
  *
  * Description:	This class is my implementation of a queue 
  *              data structure. I used an arraylist to constsruct
- *              my queue. It has the methods peek, pop, push and isemtpy.
+ *              my queue. It has the methods check, next, lineUp and isemtpy.
  *
  *************************************************************/
  
@@ -37,8 +37,8 @@ public class Queue{//begin class
         * IN: none
         * OUT: head value of queue
         ****************************************/
-        public int check(){
-            return (int) queue.get(index);
+        public Object check(){
+            return queue.get(index);
         }//end get top value
         
         /****************************************
@@ -60,8 +60,8 @@ public class Queue{//begin class
         * IN: none
         * OUT: head value of queue
         ****************************************/
-        public int next(){
-            int temp = (int) queue.get(index);
+        public Object next(){
+            Object temp = queue.get(index);
             queue.remove(index);
             return temp;
         }//end remove top value
@@ -71,7 +71,7 @@ public class Queue{//begin class
         * IN: none
         * OUT: none
         ****************************************/
-        public void lineUp(int n){
+        public void lineUp(Object n){
             queue.add(index, n);
             index++;
         }//end push value on top of stack
