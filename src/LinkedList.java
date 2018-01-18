@@ -52,8 +52,12 @@ public class LinkedList{//begin class
             
         }//end insert first
         
-        public Node printFirst(){
-            return head;
+        public Object printFirst(){
+            return head.getData();
+        }//for testing only
+        
+        public Object printSecond(){
+            return tail.getData();
         }//for testing only
  
 }//end class
