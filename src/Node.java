@@ -34,7 +34,23 @@ public class Node{//begin class
         }//end initialized constructor
  	
     //**********observers**********
+        
+        public Object getData(){
+            return data;
+        }//end get data
+        
+        public Node getLink(){
+            return link;
+        }//end get link
  	
     //**********transformers**********
+        
+        public void setData(Object d){
+            data = d;
+        }//end set data
+        
+        public void setLink(Node n){
+            link = n;
+        }//end set link
  
 }//end class
