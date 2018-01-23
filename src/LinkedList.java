@@ -10,7 +10,7 @@
  
 //import files here as needed
 
-    
+    import java.util.ArrayList;   
  
 public class LinkedList{//begin class
  	
@@ -20,16 +20,15 @@ public class LinkedList{//begin class
     
         //next class make an array list of nodes.
     
-        private Node head;
-        private Node tail;
+        private ArrayList<Node> nodes;
         private int index;
  	
     //**********constructors***********
     
         public LinkedList(){
             System.out.println("New linked list being created");
-            head = null;
-            tail = null;
+            
+            nodes = new ArrayList<Node>();
             index = 0;
         }//end constructor
  	
@@ -45,13 +44,10 @@ public class LinkedList{//begin class
     //**********transformers**********
         
         public void insertFirst(Object addMe){
-            
             Node pointer = new Node(addMe, null);
-            index++;
             
-            tail = head;            //set tail to head    
-            head = pointer;         //set head to new value pointer at beginning
-                
+            nodes.add(0, pointer);
+            index++;
         }//end insert first
         
         public void insertLast(Object addMe){
@@ -62,11 +58,11 @@ public class LinkedList{//begin class
         }
         
         public Object printFirst(){
-            return head.getData();
+            return nodes.get(0);
         }//for testing only
         
         public Object printSecond(){
-            return tail.getData();
+            return nodes.get(1);
         }//for testing only
  
 }//end class
