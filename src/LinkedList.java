@@ -62,7 +62,20 @@ public class LinkedList{//begin class
             index++;
         }//end insert random
         
+        public void deleteFirst(){
+            nodes.remove(0);
+            index--;
+        }//end delete first
         
+        public void deleteLast(){
+            nodes.remove(index);
+            index--;
+        }//end delete last
+        
+        public void deleteRandom(int deleteIndex){
+            nodes.remove(deleteIndex);
+            index--;
+        }//end delete random
         
         
         public Object printFirst(){
