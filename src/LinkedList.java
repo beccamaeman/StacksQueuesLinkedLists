@@ -55,6 +55,16 @@ public class LinkedList{//begin class
             index++;
         }//end insert last
         
+        public void insertRandom(Object addme, int index){
+            Node pointer = new Node(addme, null);
+            
+            nodes.add(index, pointer);
+            index++;
+        }//end insert random
+        
+        
+        
+        
         public Object printFirst(){
            return nodes.get(0).getData();
         }//for testing only
