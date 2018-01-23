@@ -36,7 +36,7 @@ public class LinkedList{//begin class
             if(index == 0)
                 return "null";
             
-            return nodes.get(0).getData();
+            return nodes.get(0).getLink();
         }//end is empty
  	
         public void traverse(){
@@ -71,8 +71,8 @@ public class LinkedList{//begin class
                 nodes.add(pointer);
             
             else{
-                nodes.get(index).setLink(pointer);
                 nodes.add(pointer);
+                nodes.get(index).setLink(pointer);
             }//end else
             
             index++;
@@ -93,12 +93,21 @@ public class LinkedList{//begin class
         }//end delete first
         
         public void deleteLast(){
+            int newEnd = index-1;
+            
             nodes.remove(index);
+            nodes.get(newEnd).setLink(null);
+            
             index--;
         }//end delete last
         
         public void deleteRandom(int deleteIndex){
+            int first = deleteIndex+1;
+            int last = deleteIndex-1;
+            
             nodes.remove(deleteIndex);
+            nodes.get(first).setLink(nodes.get(last));
+            
             index--;
         }//end delete random
         
@@ -110,19 +119,19 @@ public class LinkedList{//begin class
         
         
         public Object printFirst(){
-           return nodes.get(0).getData();
+           return nodes.get(0);
         }//for testing only
         
         public Object printSecond(){
-            return nodes.get(1).getData();
+            return nodes.get(1);
         }//for testing only
         
         public Object printThird(){
-            return nodes.get(2).getData();
+            return nodes.get(2);
         }//for testing only
         
         public Object printFourth(){
-            return nodes.get(3).getData();
+            return nodes.get(3);
         }//for testing only
  
 }//end class
