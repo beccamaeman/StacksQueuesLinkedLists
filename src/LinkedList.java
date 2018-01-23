@@ -44,19 +44,37 @@ public class LinkedList{//begin class
                 System.out.println(nodes.get(x).getData());
         }//end traverse
         
+        public void findKey(Object key){
+            
+        }
+        
     //**********transformers**********
         
         public void insertFirst(Object addMe){
             Node pointer = new Node(addMe, null);
             
-            nodes.add(0, pointer);
+            if(index == 0)
+                nodes.add(0, pointer);
+            
+            else{
+                pointer.setLink(nodes.get(0));
+                nodes.add(0, pointer);
+            }//end else
+            
             index++;
         }//end insert first
         
         public void insertLast(Object addMe){
             Node pointer = new Node(addMe, null);
             
-            nodes.add(pointer);
+            if(index == 0)
+                nodes.add(pointer);
+            
+            else{
+                nodes.get(index).setLink(pointer);
+                nodes.add(pointer);
+            }//end else
+            
             index++;
         }//end insert last
         
@@ -64,6 +82,8 @@ public class LinkedList{//begin class
             Node pointer = new Node(addme, null);
             
             nodes.add(indexAdd, pointer);
+            nodes.get(indexAdd).setLink(nodes.get(indexAdd+1));
+               
             index++;
         }//end insert random
         
