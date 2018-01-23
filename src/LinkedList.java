@@ -32,13 +32,18 @@ public class LinkedList{//begin class
  	
     //**********observers**********
         
-        public boolean isEmpty(){
+        public Object isEmpty(){
             if(index == 0)
-                return true;
+                return "null";
             
-            return false;
+            return nodes.get(0).getData();
         }//end is empty
  	
+        public void traverse(){
+            for(int x = 0; x < index; x++)
+                System.out.println(nodes.get(x).getData());
+        }//end traverse
+        
     //**********transformers**********
         
         public void insertFirst(Object addMe){
@@ -55,10 +60,10 @@ public class LinkedList{//begin class
             index++;
         }//end insert last
         
-        public void insertRandom(Object addme, int index){
+        public void insertRandom(Object addme, int indexAdd){
             Node pointer = new Node(addme, null);
             
-            nodes.add(index, pointer);
+            nodes.add(indexAdd, pointer);
             index++;
         }//end insert random
         
@@ -78,6 +83,12 @@ public class LinkedList{//begin class
         }//end delete random
         
         
+        
+        
+        
+        
+        
+        
         public Object printFirst(){
            return nodes.get(0).getData();
         }//for testing only
@@ -88,6 +99,10 @@ public class LinkedList{//begin class
         
         public Object printThird(){
             return nodes.get(2).getData();
+        }//for testing only
+        
+        public Object printFourth(){
+            return nodes.get(3).getData();
         }//for testing only
  
 }//end class
