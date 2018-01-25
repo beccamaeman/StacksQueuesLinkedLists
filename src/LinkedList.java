@@ -25,8 +25,8 @@ public class LinkedList{//begin class
         public LinkedList(){
             System.out.println("New linked list being created");
             
-            head = null;
-            curr = null;
+            head = new Node();
+            curr = new Node();
             index = 0;
         }//end constructor
  	
@@ -40,8 +40,9 @@ public class LinkedList{//begin class
         }//end is empty
  	
         public void traverse(){
-            while(curr.getData() != null){
+            while(curr.link != null){
                 curr = curr.link;
+                System.out.println(curr.getData());
             }//end while
         }//end traverse
         
@@ -56,7 +57,7 @@ public class LinkedList{//begin class
         public void insertFirst(Object addMe){
             Node pointer = new Node(addMe, null);
             
-            if(index == 0){
+            if(head.link == null){
                 head.setLink(pointer);
             }//end if
             else{
@@ -67,16 +68,18 @@ public class LinkedList{//begin class
             
             index++;
         }//end insert first
-        /*
+        
         public void insertLast(Object addMe){
             Node pointer = new Node(addMe, null);
             
-            if(index == 0)
-                nodes.add(pointer);
-            
+            if(head.link == null){
+                head.setLink(pointer);
+            }//end if
             else{
-                nodes.add(pointer);
-                nodes.get(index).setLink(pointer);
+                while(curr.link != null){
+                    curr = curr.link;
+                }//end while
+                curr.setLink(pointer);
             }//end else
             
             index++;
@@ -85,17 +88,16 @@ public class LinkedList{//begin class
         public void insertRandom(Object addme, int indexAdd){
             Node pointer = new Node(addme, null);
             
-            nodes.add(indexAdd, pointer);
-            nodes.get(indexAdd).setLink(nodes.get(indexAdd+1));
+            
                
             index++;
         }//end insert random
         
         public void deleteFirst(){
-            nodes.remove(0);
+            head.setLink(head.link.link);
             index--;
         }//end delete first
-        
+        /*
         public void deleteLast(){
             int newEnd = index-2;
             index--;
@@ -117,25 +119,20 @@ public class LinkedList{//begin class
         
         */
         
-        
-        
-        
-        
-        
         public Object printFirst(){
-           return head.link;
+           return head.link.getData();
         }//for testing only
         
         public Object printSecond(){
-            return head.link.link;
+            return head.link.link.getData();
         }//for testing only
         
         public Object printThird(){
-            return head.link.link.link;
+            return head.link.link.link.getData();
         }//for testing only
         
         public Object printFourth(){
-            return head.link.link.link.link;
+            return head.link.link.link.link.getData();
         }//for testing only
  
 }//end class
