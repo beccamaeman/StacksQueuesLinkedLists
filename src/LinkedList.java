@@ -10,15 +10,14 @@
  
 //import files here as needed
 
-    import java.util.ArrayList;   
- 
 public class LinkedList{//begin class
  	
     //***********class constants**********
  	
     //**********instance variable**********
     
-        private ArrayList<Node> nodes;
+        private Node head;
+        private Node curr;
         private int index;
  	
     //**********constructors***********
@@ -26,7 +25,8 @@ public class LinkedList{//begin class
         public LinkedList(){
             System.out.println("New linked list being created");
             
-            nodes = new ArrayList<Node>();
+            head = null;
+            curr = null;
             index = 0;
         }//end constructor
  	
@@ -36,34 +36,38 @@ public class LinkedList{//begin class
             if(index == 0)
                 return "null";
             
-            return nodes.get(0).getLink();
+            return curr.getLink();
         }//end is empty
  	
         public void traverse(){
-            for(int x = 0; x < index; x++)
-                System.out.println(nodes.get(x).getData());
+            while(curr.getData() != null){
+                curr = curr.link;
+            }//end while
         }//end traverse
         
         public void findKey(Object key){
-            
-        }
+            while(curr.getData() != key){
+                curr = curr.link;
+            }//end while
+        }//end find key
         
     //**********transformers**********
         
         public void insertFirst(Object addMe){
             Node pointer = new Node(addMe, null);
             
-            if(index == 0)
-                nodes.add(0, pointer);
-            
+            if(index == 0){
+                head.setLink(pointer);
+            }//end if
             else{
-                pointer.setLink(nodes.get(0));
-                nodes.add(0, pointer);
+                Node pointTo = head.link;
+                head.setLink(pointer);
+                pointer.setLink(pointTo);
             }//end else
             
             index++;
         }//end insert first
-        
+        /*
         public void insertLast(Object addMe){
             Node pointer = new Node(addMe, null);
             
@@ -93,12 +97,12 @@ public class LinkedList{//begin class
         }//end delete first
         
         public void deleteLast(){
-            int newEnd = index-1;
+            int newEnd = index-2;
+            index--;
             
             nodes.remove(index);
             nodes.get(newEnd).setLink(null);
             
-            index--;
         }//end delete last
         
         public void deleteRandom(int deleteIndex){
@@ -111,7 +115,7 @@ public class LinkedList{//begin class
             index--;
         }//end delete random
         
-        
+        */
         
         
         
@@ -119,19 +123,19 @@ public class LinkedList{//begin class
         
         
         public Object printFirst(){
-           return nodes.get(0);
+           return head.link;
         }//for testing only
         
         public Object printSecond(){
-            return nodes.get(1);
+            return head.link.link;
         }//for testing only
         
         public Object printThird(){
-            return nodes.get(2);
+            return head.link.link.link;
         }//for testing only
         
         public Object printFourth(){
-            return nodes.get(3);
+            return head.link.link.link.link;
         }//for testing only
  
 }//end class
