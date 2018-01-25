@@ -17,6 +17,7 @@ public class LinkedList{//begin class
     //**********instance variable**********
     
         private Node head;
+        private Node tail;
         private Node curr;
         private int index;
  	
@@ -26,6 +27,7 @@ public class LinkedList{//begin class
             System.out.println("New linked list being created");
             
             head = new Node();
+            tail = new Node();
             curr = new Node();
             index = 0;
         }//end constructor
@@ -40,9 +42,11 @@ public class LinkedList{//begin class
         }//end is empty
  	
         public void traverse(){
-            while(curr.link != null){
-                curr = curr.link;
+            curr = head.link;
+            
+            while(curr != null){
                 System.out.println(curr.getData());
+                curr = curr.getLink();
             }//end while
         }//end traverse
         
@@ -76,9 +80,10 @@ public class LinkedList{//begin class
                 head.setLink(pointer);
             }//end if
             else{
-                while(curr.link != null){
-                    curr = curr.link;
+                while(curr != null){
+                    curr = curr.getLink();
                 }//end while
+                
                 curr.setLink(pointer);
             }//end else
             
@@ -94,6 +99,7 @@ public class LinkedList{//begin class
         }//end insert random
         
         public void deleteFirst(){
+            head.link = null;
             head.setLink(head.link.link);
             index--;
         }//end delete first
