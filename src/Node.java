@@ -18,19 +18,21 @@ public class Node{//begin class
  	
     //**********instance variable**********
     
-        protected Object data;
+        private Object data;
         protected Node link;
  	
     //**********constructors***********
     
         public Node(){
+            System.out.println("New default node created");
             data = 0;
             link = null;
         }//end default constructor
         
-        public Node(Object d, Node n){
+        public Node(Object d, Node l){
+            System.out.println("New constructed node created");
             data = d;
-            link = n;
+            link = l;
         }//end initialized constructor
  	
     //**********observers**********
@@ -49,8 +51,8 @@ public class Node{//begin class
             data = d;
         }//end set data
         
-        public void setLink(Node n){
-            link = n;
+        public void setLink(Node l){
+            link = l;
         }//end set link
  
 }//end class
