@@ -92,9 +92,41 @@ public class LinkedList{//begin class
         }//end insert after
         
         public void deleteFirst(){
-            head.link = null;
-            head.setLink(head.link.link);
-            index--;
+            if(head == null)
+               System.out.println("Nothing to delete");
+            else{
+                head = head.link;
+            }//end else
         }//end delete first
+        
+        public void delete(Object delme){
+            curr = head;
+            
+            if(head == null)
+               System.out.println("Nothing to delete");
+            else{
+                while(curr.getData() != delme){
+                    prev = curr;
+                    curr = curr.link;
+                }//end while
+                prev.link = curr.link;
+            }//end else
+        }//end delete
+        
+        public void deleteLast(){
+            Node prevprev = new Node();
+            curr = head;
+            
+            if(head == null)
+               System.out.println("Nothing to delete");
+            else{
+                while(curr != null){
+                    prevprev = prev;
+                    prev = curr;
+                    curr = curr.link;
+                }//end while
+                prevprev.link = null;
+            }//end else
+        }//end delete last
         
 }//end class
