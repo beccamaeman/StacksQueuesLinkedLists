@@ -78,57 +78,23 @@ public class LinkedList{//begin class
             }//end while
             newN.link = curr;
             prev.link = newN;
-        }//end insert random
+        }//end insert before
         
         public void insertAfter(Object addme, Object key){
+            Node newN = new Node(addme, null);
+            curr = head;
             
-        }
+            while(curr.getData() != key){
+                curr = curr.link;
+            }//end while
+            newN.link = curr.link;
+            curr.link = newN;
+        }//end insert after
         
         public void deleteFirst(){
             head.link = null;
             head.setLink(head.link.link);
             index--;
         }//end delete first
-        /*
-        public void deleteLast(){
-            int newEnd = index-2;
-            index--;
-            
-            nodes.remove(index);
-            nodes.get(newEnd).setLink(null);
-            
-        }//end delete last
         
-        public void deleteRandom(int deleteIndex){
-            int first = deleteIndex+1;
-            int last = deleteIndex-1;
-            
-            nodes.remove(deleteIndex);
-            nodes.get(first).setLink(nodes.get(last));
-            
-            index--;
-        }//end delete random
-        
-        */
-        
-        public Object printFirst(){
-           return head.getData();
-        }//for testing only
-        
-        public Object printSecond(){
-            return head.link.getData();
-        }//for testing only
-        
-        public Object printThird(){
-            return head.link.link.getData();
-        }//for testing only
-        
-        public Object printFourth(){
-            return head.link.link.link.getData();
-        }//for testing only
-        
-        public Object printFifth(){
-            return head.link.link.link.link.getData();
-        }//for testing only
- 
 }//end class
