@@ -19,6 +19,7 @@ public class LinkedList{//begin class
         private Node head;
         private Node tail;
         private Node curr;
+        private Node prev;
         private int index;
  	
     //**********constructors***********
@@ -26,77 +27,62 @@ public class LinkedList{//begin class
         public LinkedList(){
             System.out.println("New linked list being created");
             
-            head = new Node();
-            tail = new Node();
-            curr = new Node();
-            index = 0;
+            
         }//end constructor
  	
     //**********observers**********
         
         public Object isEmpty(){
-            if(index == 0)
+            if(head == null)
                 return "null";
             
             return curr.getLink();
         }//end is empty
  	
         public void traverse(){
-            curr = head.link;
+            curr = head;
             
             while(curr != null){
                 System.out.println(curr.getData());
-                curr = curr.getLink();
+                curr = curr.link;
             }//end while
         }//end traverse
         
-        public void findKey(Object key){
+        public Node findKey(Object key){
             while(curr.getData() != key){
                 curr = curr.link;
             }//end while
+            return curr;
         }//end find key
         
     //**********transformers**********
         
-        public void insertFirst(Object addMe){
-            Node pointer = new Node(addMe, null);
+        public void insertFirst(Object addme){
+            Node newN = new Node(addme, null);
             
-            if(head.link == null){
-                head.setLink(pointer);
-            }//end if
+            if(head == null)
+                head = newN;
             else{
-                Node pointTo = head.link;
-                head.setLink(pointer);
-                pointer.setLink(pointTo);
+                newN.link = head;
+                head = newN;
             }//end else
-            
-            index++;
-        }//end insert first
+        }//add for testing
         
-        public void insertLast(Object addMe){
-            Node pointer = new Node(addMe, null);
+        public void insertBefore(Object addme, Object key){
+            Node newN = new Node(addme, null);
+            curr = head;
             
-            if(head.link == null){
-                head.setLink(pointer);
-            }//end if
-            else{
-                while(curr != null){
-                    curr = curr.getLink();
-                }//end while
-                
-                curr.setLink(pointer);
-            }//end else
-            
-            index++;
-        }//end insert last
-        
-        public void insertRandom(Object addme, int indexAdd){
-            Node pointer = new Node(addme, null);
-            
-            
-               
-            index++;
+            while(curr.getData() != key){
+                prev = curr;
+                curr = curr.link;
+            }//end while
+            newN.link = curr;
+            prev.link = newN;
         }//end insert random
+        
+        public void insertAfter(Object addme, Object key){
+            
+        }
         
         public void deleteFirst(){
             head.link = null;
@@ -126,18 +112,22 @@ public class LinkedList{//begin class
         */
         
         public Object printFirst(){
-           return head.link.getData();
+           return head.getData();
         }//for testing only
         
         public Object printSecond(){
-            return head.link.link.getData();
+            return head.link.getData();
         }//for testing only
         
         public Object printThird(){
-            return head.link.link.link.getData();
+            return head.link.link.getData();
         }//for testing only
         
         public Object printFourth(){
+            return head.link.link.link.getData();
+        }//for testing only
+        
+        public Object printFifth(){
             return head.link.link.link.link.getData();
         }//for testing only
  
