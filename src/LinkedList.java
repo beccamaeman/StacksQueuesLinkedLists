@@ -16,29 +16,40 @@ public class LinkedList{//begin class
  	
     //**********instance variable**********
     
-        private Node head;
-        private Node tail;
-        private Node curr;
-        private Node prev;
-        private int index;
- 	
+        private Node head;      //pointer to first element
+        private Node curr;      //pointer to move through linked list
+        private Node prev;      //pointer to element previous to current
+        
     //**********constructors***********
-    
+        
+        /****************************************
+        * linked list constructor
+        * IN: none
+        * OUT: message it's created
+        ****************************************/
         public LinkedList(){
             System.out.println("New linked list being created");
-            
-            
         }//end constructor
  	
     //**********observers**********
         
+        /****************************************
+        * check if linked list is empty
+        * IN: none
+        * OUT: either null or pointer to head
+        ****************************************/
         public Object isEmpty(){
             if(head == null)
                 return "null";
             
-            return curr.getLink();
+            return head;
         }//end is empty
  	
+        /****************************************
+        * method to traverse the array
+        * IN: none
+        * OUT: data in linked list
+        ****************************************/
         public void traverse(){
             curr = head;
             
@@ -48,15 +59,32 @@ public class LinkedList{//begin class
             }//end while
         }//end traverse
         
-        public Node findKey(Object key){
-            while(curr.getData() != key){
-                curr = curr.link;
-            }//end while
-            return curr;
+        /****************************************
+        * will find a key in the linked list
+        * IN: the key
+        * OUT: address of key
+        ****************************************/
+        public Object findKey(Object key){
+            curr = head;
+            
+            if(head == null)
+                return "null";
+            else{
+                while(curr.getData() != key){
+                    curr = curr.link;
+                }//end while
+            
+                return curr;
+            }//end else
         }//end find key
         
     //**********transformers**********
         
+        /****************************************
+        * method to insert at start
+        * IN: data to add
+        * OUT: none
+        ****************************************/
         public void insertFirst(Object addme){
             Node newN = new Node(addme, null);
             
@@ -68,6 +96,11 @@ public class LinkedList{//begin class
             }//end else
         }//add for testing
         
+        /****************************************
+        * method to insert before a key
+        * IN: data to add and the key to add before
+        * OUT: none
+        ****************************************/
         public void insertBefore(Object addme, Object key){
             Node newN = new Node(addme, null);
             curr = head;
@@ -80,6 +113,11 @@ public class LinkedList{//begin class
             prev.link = newN;
         }//end insert before
         
+        /****************************************
+        * method to insert after a key
+        * IN: data to add and the key to add after
+        * OUT: none
+        ****************************************/
         public void insertAfter(Object addme, Object key){
             Node newN = new Node(addme, null);
             curr = head;
@@ -91,6 +129,11 @@ public class LinkedList{//begin class
             curr.link = newN;
         }//end insert after
         
+        /****************************************
+        * method to delete first element
+        * IN: none
+        * OUT: none
+        ****************************************/
         public void deleteFirst(){
             if(head == null)
                System.out.println("Nothing to delete");
@@ -99,6 +142,11 @@ public class LinkedList{//begin class
             }//end else
         }//end delete first
         
+        /****************************************
+        * method to delete an element
+        * IN: key to delete
+        * OUT: none
+        ****************************************/
         public void delete(Object delme){
             curr = head;
             
@@ -113,6 +161,11 @@ public class LinkedList{//begin class
             }//end else
         }//end delete
         
+        /****************************************
+        * method to delete last element
+        * IN: none
+        * OUT: none
+        ****************************************/
         public void deleteLast(){
             Node prevprev = new Node();
             curr = head;
